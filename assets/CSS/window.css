@@ -1,0 +1,49 @@
+#cms .cms-window {
+	background: #FFF;
+	border-radius: 15px;
+	bottom: 52px;
+	left: 30px;
+	position: fixed;
+	right: 360px;
+	top: 70px;
+}
+	#cms .cms-window > DIV {
+		height: 100%;
+		position: relative;
+	}
+		#cms .cms-window > DIV HEADER {
+			color: #94CC95;
+			height: 30px;
+		}
+			#cms .cms-window > DIV HEADER H2 {
+				border-bottom: 1px solid #EEE;
+				font: bold 1.6em/30px Helvetica, Arial, sans-serif;
+				margin: 0 10px;		
+			}
+		#cms .cms-window > DIV ARTICLE {
+			bottom: 10px;
+			left: 10px;
+			overflow-y: auto;
+			position: absolute;
+			right: 10px;
+			top: 30px;
+		}
+
+#cms .tabbed.cms-window {
+}
+	#cms .tabbed.cms-window > DIV > UL {
+		position: absolute;
+		top: 30px;
+	}
+		#cms .tabbed.cms-window > DIV > UL LI {
+			display: inline-block;
+		}
+	#cms .tabbed.cms-window ARTICLE {
+		top: 60px;
+	}
+	
+#cms .small.cms-window {
+	left: auto;
+	right: 30px;
+	width: 300px;
+}
