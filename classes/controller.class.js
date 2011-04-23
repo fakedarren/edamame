@@ -62,6 +62,6 @@ var Controller = new Class({
 
 module.exports = {
 	initialize: function(app) {
-    	new Controller(app);
+		new Controller(app);
 	}
 }
