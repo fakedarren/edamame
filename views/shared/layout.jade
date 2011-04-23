@@ -5,6 +5,20 @@ html(lang="en")
 		link(href="/css/main.css")(rel="stylesheet")
 		link(href="/css/window.css")(rel="stylesheet")
 	body
+	
+	#cms
+		#cms-header
+			h1 CMS
+			input(type="search")
+			ul
+				li Site
+				li Stories
+				li Library
+				li Users
+				li Settings
+		#cms-footer
+			p Logged in as #{username}
+	
 		div#body!= body
 
 	script(src="/javascript/mootools.core.js")
