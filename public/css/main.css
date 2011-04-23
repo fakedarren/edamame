@@ -36,23 +36,43 @@ H1, H2, H3, H4, H5, H6, P, UL, LI {
 		top: 0;		
 	}
 		#cms #cms-header H1 {
+			color: #FFF;
 			float: left;
+			line-height: 37px;
+			padding: 0 0 0 30px;
+			text-shadow: #555 1px 1px;
 		}
 		#cms #cms-header UL {
 			float: right;
 		}
 			#cms #cms-header UL LI {
+				color: #FFF;
+				cursor: pointer;
 				display: inline-block;
+				font-size: 1.4em;
+				line-height: 37px;		
+				padding: 0 5px;
+				text-shadow: #555 1px 1px;
 			}
 		#cms #cms-header [type=search] {
 			float: right;
+			height: 23px;
+			margin: 7px 30px 7px 20px;
+			width: 200px;
 		}
 	#cms #cms-footer {
 		background-image: -webkit-linear-gradient(top, #A4D442, #4B711E);
 		border-top: 2px solid #FFF;
 		bottom: 0;		
-		height: 20px;
+		height: 23px;
 		left: 0;
 		position: fixed;
 		right: 0;
 	}
+		#cms #cms-footer P {
+			color: #FFF;
+			float: right;
+			font-size: 1.2em;
+			line-height: 23px;
+			margin: 0 30px 0 0;
+		}
