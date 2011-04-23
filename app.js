@@ -19,6 +19,4 @@ app.configure(function(){
 var controller	= require('./classes/controller.class');
 controller.initialize(app);
 
-var users = require('./classes/users.class').initialize(app);
-
 app.listen(80);
