@@ -10,11 +10,7 @@ module.exports = {
 	},
 	
 	index: function(req, res){
-		jade.renderFile('./views/index/index.jade', {} ,function(err, html){
-			if (err) console.log(err);
-			res.send(html);
-		});
-
+		res.render('index/index', {});
 	}
 	
 };

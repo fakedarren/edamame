@@ -3,8 +3,13 @@ var jade = require('jade');
 require('mootools');
 
 var app = express.createServer();
-app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'jade');
+
+app.configure(function(){
+    app.set('view engine', 'jade');
+    app.set('views', __dirname + '/views');
+    app.set('view options', { layout: 'shared/layout' });
+    app.use(express.static(__dirname + '/public'));
+});
 
 var controller	= require('./classes/controller.class');
 controller.initialize(app);
