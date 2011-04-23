@@ -42,4 +42,6 @@ Element.implement({
 		}).send();
 	});
 	
+	$$('#cms-header LI A')[3].fireEvent('click');
+	
 })(document.id);
