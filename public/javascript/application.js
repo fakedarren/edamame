@@ -29,8 +29,11 @@ Element.implement({
 	};
 	initUI(document.body);
 	
-	$$('#cms-header LI A').addEvent('click', function(evt){
+	var mainNav = $$('#cms-header LI A');
+	mainNav.addEvent('click', function(evt){
 		if (evt) evt.stop();
+		mainNav.removeClass('current');
+		this.addClass('current');
 		new Request({
 			url: this.get('href'),
 			method: 'get',
@@ -41,7 +44,5 @@ Element.implement({
 			}
 		}).send();
 	});
-	
-	$$('#cms-header LI A')[3].fireEvent('click');
 	
 })(document.id);

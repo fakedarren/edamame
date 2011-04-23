@@ -59,7 +59,7 @@ H1, H2, H3, H4, H5, H6, P, UL, LI {
 					text-decoration: none;
 					text-shadow: #555 1px 1px;
 				}
-				#cms #cms-header UL LI A:HOVER {
+				#cms #cms-header UL LI A:HOVER, #cms #cms-header UL LI .current {
 					color: #FF0;
 				}
 		#cms #cms-header [type=search] {

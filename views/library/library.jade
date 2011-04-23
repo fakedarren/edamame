@@ -1,0 +1,54 @@
+.tabbed.cms-window
+	div
+		header
+			h2 Library
+		ul.tabs
+			li.current Images
+			li Videos
+			li Audio
+		article.image.library.current
+			ul.list
+				li
+					img(src="http://placekitten.com/200/300")
+				li
+					img(src="http://placekitten.com/500/300")
+				li
+					img(src="http://placekitten.com/200/600")
+				li
+					img(src="http://placekitten.com/200/300")
+				li
+					img(src="http://placekitten.com/500/342")
+				li
+					img(src="http://placekitten.com/744/234")
+		article.video.library
+			ul.list
+				li
+					object
+						param(name="movie")(value="http://www.youtube.com/v/UXjUQnSi9zE?fs=1&amp;hl=en_US")
+						param(name="allowFullScreen")(value="true")
+						param(name="allowscriptaccess")(value="always")
+						embed(src="http://www.youtube.com/v/UXjUQnSi9zE?fs=1&amp;hl=en_US")(type="application/x-shockwave-flash")(allowfullscreen="true")
+				li
+					object
+						param(name="movie")(value="http://www.youtube.com/v/UXjUQnSi9zE?fs=1&amp;hl=en_US")
+						param(name="allowFullScreen")(value="true")
+						param(name="allowscriptaccess")(value="always")
+						embed(src="http://www.youtube.com/v/UXjUQnSi9zE?fs=1&amp;hl=en_US")(type="application/x-shockwave-flash")(allowfullscreen="true")
+				li
+					object
+						param(name="movie")(value="http://www.youtube.com/v/UXjUQnSi9zE?fs=1&amp;hl=en_US")
+						param(name="allowFullScreen")(value="true")
+						param(name="allowscriptaccess")(value="always")
+						embed(src="http://www.youtube.com/v/UXjUQnSi9zE?fs=1&amp;hl=en_US")(type="application/x-shockwave-flash")(allowfullscreen="true")
+		article.library
+			p Audio
+			
+.small.cms-window
+	div
+		header
+			h2 Options
+		article.library
+			form
+				fieldset
+					label Upload a new file
+						input(type="upload")

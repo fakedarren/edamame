@@ -1,0 +1,24 @@
+.cms-window .library {
+}
+	.cms-window .library UL {
+	}
+		.cms-window .library UL LI {
+			float: left;
+			height: 105px;
+			line-height: 105px;
+			text-align: center;
+			width: 140px;		
+		}
+		.cms-window .image.library UL LI {
+		}
+			.cms-window .image.library UL LI IMG {
+				max-height: 105px;
+				max-width: 140px;
+				vertical-align: middle;
+			}
+		.cms-window .video.library UL LI {
+		}
+			.cms-window .video.library UL LI EMBED {
+				height: 105px;
+				width: 140px;
+			}
