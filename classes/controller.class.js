@@ -15,12 +15,12 @@ var Controller = new Class({
 	parseControllers: function(){
 		var self = this;
 		fs.readdir(__dirname + '/../controllers', function(err, files){
-        	if (err) throw err;
-        	files.forEach(function(file){
-            	console.log("loading controller " + file);
-            	self.loadController(file);
-        	});
-	    });
+			if (err) throw err;
+			files.forEach(function(file){
+				console.log("loading controller " + file);
+				self.loadController(file);
+			});
+		});
 	},
 	
 	loadController: function(file){
