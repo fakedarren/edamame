@@ -33,13 +33,21 @@
 }
 	#cms .tabbed.cms-window > DIV > UL {
 		position: absolute;
-		top: 30px;
+		left: 10px;
+		right: 10px;
+		top: 25px;
 	}
 		#cms .tabbed.cms-window > DIV > UL LI {
+			background: #BABABA;
 			display: inline-block;
+			height: 25px;
+		}
+		#cms .tabbed.cms-window > DIV > UL LI.current {
+			background: #D6D6D6;	
 		}
 	#cms .tabbed.cms-window ARTICLE {
-		top: 60px;
+		background: #D6D6D6;
+		top: 50px;
 	}
 	
 #cms .small.cms-window {
