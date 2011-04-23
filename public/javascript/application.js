@@ -30,7 +30,7 @@ Element.implement({
 	initUI(document.body);
 	
 	$$('#cms-header LI A').addEvent('click', function(evt){
-		evt.stop();
+		if (evt) evt.stop();
 		new Request({
 			url: this.get('href'),
 			method: 'get',

@@ -2,14 +2,14 @@
 module.exports = {
 
 	routes: {
-		'navigation': {
-			'url': '/navigation',
+		'site': {
+			'url': '/site',
 			'method': 'get'
 		}
 	},
 	
-	navigation: function(req, res){
-		res.partial('site/navigation');
+	site: function(req, res){
+		res.partial('site/site');
 	}
 	
 };

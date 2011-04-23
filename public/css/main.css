@@ -7,6 +7,7 @@ HTML, BODY {
 	padding: 0;
 }
 BODY {
+	color: #222;
 	font: 62.5%/1 Helvetica, Arial, sans-serif;
 }
 
@@ -27,7 +28,8 @@ H1, H2, H3, H4, H5, H6, P, UL, LI {
 	top: 0;
 }
 	#cms #cms-header {
-		background-image: -webkit-linear-gradient(top, #A4D442, #4B711E);
+		background-image: -moz-linear-gradient(top, #A4D442, #4B711E);
+  		background-image: -webkit-linear-gradient(top, #A4D442, #4B711E);
 		border-bottom: 3px solid #FFF;
 		height: 37px;
 		left: 0;
@@ -67,6 +69,7 @@ H1, H2, H3, H4, H5, H6, P, UL, LI {
 			width: 200px;
 		}
 	#cms #cms-footer {
+		background-image: -moz-linear-gradient(top, #A4D442, #4B711E);
 		background-image: -webkit-linear-gradient(top, #A4D442, #4B711E);
 		border-top: 2px solid #FFF;
 		bottom: 0;		
