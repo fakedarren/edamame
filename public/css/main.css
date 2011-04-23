@@ -46,14 +46,20 @@ H1, H2, H3, H4, H5, H6, P, UL, LI {
 			float: right;
 		}
 			#cms #cms-header UL LI {
-				color: #FFF;
 				cursor: pointer;
 				display: inline-block;
 				font-size: 1.4em;
 				line-height: 37px;		
 				padding: 0 5px;
-				text-shadow: #555 1px 1px;
 			}
+				#cms #cms-header UL LI A {
+					color: #FFF;
+					text-decoration: none;
+					text-shadow: #555 1px 1px;
+				}
+				#cms #cms-header UL LI A:HOVER {
+					color: #FF0;
+				}
 		#cms #cms-header [type=search] {
 			float: right;
 			height: 23px;

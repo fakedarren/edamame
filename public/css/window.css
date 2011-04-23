@@ -32,16 +32,16 @@
 
 #cms .tabbed.cms-window {
 }
-	#cms .tabbed.cms-window > DIV HEADER H2 {
+	#cms .tabbed.cms-window HEADER H2 {
 		border: none;
 	}
-	#cms .tabbed.cms-window > DIV > UL {
+	#cms .tabbed.cms-window .tabs {
 		position: absolute;
 		left: 10px;
 		right: 10px;
 		top: 30px;
 	}
-		#cms .tabbed.cms-window > DIV > UL LI {
+		#cms .tabbed.cms-window .tabs LI {
 			background: #BABABA;
 			border-top-left-radius: 5px;
 			border-top-right-radius: 5px;
@@ -54,7 +54,7 @@
 			margin: 0 5px 0 0;
 			padding: 0 5px;
 		}
-		#cms .tabbed.cms-window > DIV > UL LI.current {
+		#cms .tabbed.cms-window .tabs LI.current {
 			background: #D6D6D6;	
 			color: #111;
 			font-size: 1.2em;

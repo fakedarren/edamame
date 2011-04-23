@@ -11,14 +11,18 @@ html(lang="en")
 			h1 CMS
 			input(type="search")
 			ul
-				li Site
-				li Stories
-				li Library
-				li Settings
+				li 
+					a(href="/navigation") Site
+				li
+					a(href="/stories") Stories
+				li
+					a(href="/library") Library
+				li
+					a(href="/settings") Settings
 		#cms-footer
 			p Logged in as #{username}
 	
-		div#body!= body
+		div#cms-body!= body
 
 	script(src="/javascript/mootools.core.js")
 	script(src="/javascript/application.js")

@@ -5,7 +5,7 @@
 Element.implement({
 
 	makeWindowTabbed: function(){
-		var tabs = this.getElement('ul').getElements('li');
+		var tabs = this.getElement('.tabs').getElements('li');
 		var content = this.getElements('article');
 		tabs.each(function(tab, index){
 			tab.addEvent('click', function(){
@@ -24,6 +24,22 @@ Element.implement({
 
 (function($){
 	
-	$$('.tabbed.cms-window').makeWindowTabbed();
+	var initUI = function(context){
+		context.getElements('.tabbed.cms-window').makeWindowTabbed();
+	};
+	initUI(document.body);
+	
+	$$('#cms-header LI A').addEvent('click', function(evt){
+		evt.stop();
+		new Request({
+			url: this.get('href'),
+			method: 'get',
+			onSuccess: function(response){
+				$('cms-body').empty();
+				$('cms-body').set('html', response);
+				initUI($('cms-body'));
+			}
+		}).send();
+	});
 	
 })(document.id);
