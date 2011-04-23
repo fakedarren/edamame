@@ -1,5 +1,7 @@
-var jade = require('jade');
-		
+/*
+Credit: https://github.com/jettro/nodejstryout
+*/
+
 module.exports = {
 
 	routes: {
@@ -30,11 +32,10 @@ module.exports = {
 	},
 	
 	logIn: function(req, res){
-	
 		var sys = require('sys');
 		var OAuth = require('oauth').OAuth;
 		var config = require('../config/configuration');
-		
+
 		oa = new OAuth(
 			"https://api.twitter.com/oauth/request_token",
 			"https://api.twitter.com/oauth/access_token",
@@ -45,7 +46,7 @@ module.exports = {
 			"HMAC-SHA1"
 		);
 		req.session.oauth = oa;
-		
+
 		oa.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
 			if (error){
 				new Error(error.data);
@@ -57,16 +58,19 @@ module.exports = {
 		});	
 	},
 	
-	authenticated: function(req, res, next){
-	    if (req.session.oauth){
-	        req.session.oauth.verifier = req.query.oauth_verifier;
-	        var oauth = req.session.oauth;
-	        oa.getOAuthAccessToken(oauth.token, oauth.token_secret, oauth.verifier, function(error, oauth_access_token, oauth_access_token_secret, results){
-                if (error) new Error(error);
-                req.session.user = {name:results.screen_name};
-                res.redirect("/");
-            });
-	    }
+	authenticated: function(req, res){
+		if (req.session.oauth){
+			req.session.oauth.verifier = req.query.oauth_verifier;
+			var oauth = req.session.oauth;
+			var callback = function(error, oauth_access_token, oauth_access_token_secret, results){
+				if (error) new Error(error);
+				req.session.user = {
+					name: results.screen_name
+				};
+				res.redirect("/");
+			};
+			oa.getOAuthAccessToken(oauth.token, oauth.token_secret, oauth.verifier, callback);
+		}
 	}
 	
 };
