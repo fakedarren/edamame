@@ -17,7 +17,16 @@ app.configure(function(){
 	app.use(express.session({ secret: "MooToolsFTW" }));
 });
 
-var controller	= require('./classes/controller.class');
+var controller = require('./classes/controller.class');
 controller.initialize(app);
+
+app.get(/^\/[^cms?].*/, function(req, res){
+	res.render('frontend/page', {
+		layout: false,
+		locals: {
+			path: req.url
+		}
+	});
+});
 
 app.listen(80);
