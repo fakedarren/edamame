@@ -1,0 +1,32 @@
+/* CRUDE ROUGH CRUSTY EXAMPLE STYLESHEET */
+HTML {
+	font-size: 100%;
+}
+HTML, BODY {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+BODY {
+	color: #222;
+	font: 62.5%/1 Helvetica, Arial, sans-serif;
+}
+
+P {
+	font-size: 1.2em;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 960px;
+}
+
+.left.column {
+	float: left;
+	margin-right: 20px;
+	width: 620px;
+}
+.right.column {
+	float: left;
+	width: 320px;
+}
