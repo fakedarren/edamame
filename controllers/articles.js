@@ -3,7 +3,7 @@ module.exports = {
 
 	routes: {
 		'articles': {
-			'url': '/articles',
+			'url': '/cms/articles',
 			'method': 'get'
 		}
 	},

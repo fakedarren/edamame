@@ -3,7 +3,7 @@ module.exports = {
 
 	routes: {
 		'library': {
-			'url': '/library',
+			'url': '/cms/library',
 			'method': 'get'
 		}
 	},

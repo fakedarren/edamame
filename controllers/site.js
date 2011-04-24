@@ -6,7 +6,7 @@ module.exports = {
 
 	routes: {
 		'site': {
-			'url': '/site',
+			'url': '/cms/site',
 			'method': 'get'
 		}
 	},

@@ -3,7 +3,7 @@ module.exports = {
 
 	routes: {
 		'settings': {
-			'url': '/settings',
+			'url': '/cms/settings',
 			'method': 'get'
 		}
 	},

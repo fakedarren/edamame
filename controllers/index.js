@@ -6,15 +6,15 @@ module.exports = {
 
 	routes: {
 		'index': {
-			'url': '/',
+			'url': '/cms',
 			'method': 'get'
 		},
 		'logIn': {
-			'url': '/login',
+			'url': '/cms/login',
 			'method': 'get'
 		},
 		'authenticated': {
-			'url': '/authenticated',
+			'url': '/cms/authenticated',
 			'method': 'get'
 		}
 	},
@@ -27,7 +27,7 @@ module.exports = {
 				}
 			});
 		} else {
-			res.redirect('/logIn');
+			res.redirect('/cms/logIn');
 		}
 	},
 	
@@ -42,7 +42,7 @@ module.exports = {
 			config.twitter.consumerKey,
 			config.twitter.consumerSecret,
 			"1.0A",
-			config.host + '/authenticated',
+			config.host + '/cms/authenticated',
 			"HMAC-SHA1"
 		);
 		req.session.oauth = oa;
@@ -67,7 +67,7 @@ module.exports = {
 				req.session.user = {
 					name: results.screen_name
 				};
-				res.redirect("/");
+				res.redirect("/cms/");
 			};
 			oa.getOAuthAccessToken(oauth.token, oauth.token_secret, oauth.verifier, callback);
 		}
