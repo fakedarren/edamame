@@ -4,16 +4,10 @@
 			h2 Site
 		article.site
 			ul.list
-				li Main Navigation
-					ul
-						li Home
-						li Docs
-						li Demos
-						li Blog
-						li About
-				li Footer Navigation
-					ul
-						li About
-						li Contact Us
-						li Foo
-						li Whatever
+				- each page in pages
+					- if (!page.parent)
+						li #{page.name}
+							ul
+								- each child in pages
+									-if (child.parent == page.name)
+										li #{child.name}

@@ -28,27 +28,28 @@ var Controller = new Class({
 		var app = this.app;
 		var controller = require('../controllers/' + file);
 		var routes = controller["routes"];
+		var thisAction;
 		
 		Object.keys(controller).map(function(action){
 			var fn = controller[action];
 			if(typeof(fn) === "function"){
-				if(a = routes[action]){
-					switch(a.method){
+				if(thisAction = routes[action]){
+					switch(thisAction.method){
 						case 'get':
-							app.get(a.url, fn);
-							console.log("initialized get " + a.url);
+							app.get(thisAction.url, fn);
+							console.log("initialized get " + thisAction.url);
 							break;
 						case 'post':
-							app.post(a.url, fn);
-							console.log("initialized post " + a.url);
+							app.post(thisAction.url, fn);
+							console.log("initialized post " + thisAction.url);
 							break;
 						case 'put':
-							app.put(a.url, fn);
-							console.log("initialized put " + a.url);
+							app.put(thisActiona.url, fn);
+							console.log("initialized put " + thisAction.url);
 							break;
 						case 'delete':
-							app.del(a.url, fn);
-							console.log("initialized delete " + a.url);
+							app.del(thisAction.url, fn);
+							console.log("initialized delete " + thisAction.url);
 							break;
 					}
 				} else {
