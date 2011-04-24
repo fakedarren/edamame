@@ -21,7 +21,7 @@ var controller = require('./classes/controller.class');
 controller.initialize(app);
 
 app.get(/^\/[^cms?].*/, function(req, res){
-	res.render('frontend/page', {
+	res.render('frontend/page.ejs', {
 		layout: false,
 		locals: {
 			path: req.url
