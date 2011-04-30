@@ -12,6 +12,8 @@
     "express": "*",
     "jade": "*",
     "mongoose": "*",
+    "oauth": "*",
+    "ejs": "*"
     "mootools": "*"
   }
 }
