@@ -1,0 +1,17 @@
+{
+  "name": "mootoolscms",
+  "version": "0.0.0",
+  "repository": {},
+  "directories": {
+    "lib": ""
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "mongoose": "*",
+    "mootools": "*"
+  }
+}
