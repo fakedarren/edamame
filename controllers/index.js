@@ -16,6 +16,10 @@ module.exports = {
 		'authenticated': {
 			'url': '/cms/authenticated',
 			'method': 'get'
+		},
+		'install': {
+			'url': '/cms/install',
+			'method': 'get'
 		}
 	},
 	
@@ -71,6 +75,35 @@ module.exports = {
 			};
 			oa.getOAuthAccessToken(oauth.token, oauth.token_secret, oauth.verifier, callback);
 		}
+	},
+	
+	install: function(req, res){
+
+		var mongoose = require('mongoose');
+		var Schema = mongoose.Schema;
+		var db = mongoose.connect('mongodb://localhost/cms');
+		
+		var install = require('../install/install');
+		install.forEach(function(module){
+			
+			var item = require('../install/' + module);
+			
+			var Model = new Schema(item.schema);
+			mongoose.model(item.name, Model);
+
+			var ModelObject = db.model(item.name);
+			var m = new ModelObject();
+			m.collection.drop();
+
+			item.records.each(function(record){
+				var m = new ModelObject();
+				Object.each(record, function(value, key){
+					m[key] = value;
+				});
+				m.save();
+			});
+		});
+		res.send('Install script complete');
 	}
 	
 };

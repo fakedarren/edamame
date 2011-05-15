@@ -11,7 +11,6 @@ app.configure(function(){
     app.set('view options', { layout: 'shared/layout' });
 	app.use(express.methodOverride());
 	app.use(express.static(__dirname + '/public'));
-//	app.use(express.logger());
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());
 	app.use(express.session({ secret: "MooToolsFTW" }));
