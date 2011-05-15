@@ -29,6 +29,11 @@
 			right: 10px;
 			top: 30px;
 		}
+		#cms .cms-window > DIV .functions {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+		}
 
 #cms .tabbed.cms-window {
 }

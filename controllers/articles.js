@@ -8,6 +8,14 @@ module.exports = {
 		'articles': {
 			'url': '/cms/articles',
 			'method': 'get'
+		},
+		'create': {
+			'url': '/cms/articles/create',
+			'method': 'get'
+		},
+		'saveNew': {
+			'url': '/cms/articles/create',
+			'method': 'post'
 		}
 	},
 	
@@ -29,6 +37,18 @@ module.exports = {
 					draft: draft
 				}
 			});
+		});
+	},
+	
+	create: function(req, res){
+		res.partial('articles/create');
+	},
+	
+	saveNew: function(req, res){
+		res.partial('articles/create', {
+			locals: {
+				successful: true
+			}
 		});
 	}
 	

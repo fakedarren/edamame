@@ -17,7 +17,8 @@ CMS.TextEditor = new Class({
 			src: this.options.canvas,
 			frameborder: 0,
 			events: {
-				load: function()	{
+				load: function(){
+					this.addClass('texteditor');
 					self.textarea.setStyle('display', 'none');
 					self.setupIframe();
 					self.bindEventListeners();

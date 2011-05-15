@@ -26,6 +26,21 @@ Element.implement({
 	
 	var initUI = function(context){
 		context.getElements('.tabbed.cms-window').makeWindowTabbed();
+		context.getElements('a').addEvent('click', function(evt){
+			if (evt) evt.stop();
+			new Request({
+				url: this.get('href'),
+				method: 'get',
+				onSuccess: function(response){
+					$('cms-body').empty();
+					$('cms-body').set('html', response);
+					initUI($('cms-body'));
+				}
+			}).send();
+		});
+		context.getElements('.texteditor').each(function(editor){
+			new CMS.TextEditor(editor);
+		});
 	};
 	initUI(document.body);
 	
