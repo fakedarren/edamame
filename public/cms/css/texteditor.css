@@ -1,9 +1,80 @@
 .toolbar {
+	margin: 15px 0 5px;
+	padding: 5px 0;
 }
 	.toolbar HR {
 		display: inline;
 		margin: 0 5px;
 	}
-IFRAME.texteditor {
+	.toolbar BUTTON {
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		border-bottom: 1px solid #CCC;
+		border-left: 1px solid #EEE;
+		border-right: 1px solid #CCC;
+		border-top: 1px solid #EEE;
+		cursor: pointer;
+		display: inline-block;
+		height: 16px;
+		margin: 0 5px 0 0;
+		padding: 10px;
+		text-indent: -9999px;
+		width: 16px;
+	}
+		.toolbar BUTTON:HOVER	{
+			background-color: #FFC;
+			border-bottom: 1px solid #EEE;
+			border-left: 1px solid #CCC;
+			border-right: 1px solid #EEE;
+			border-top: 1px solid #CCC;
+		}
+	.toolbar BUTTON.heading1 {
+		background-image: url(/cms/assets/buttons/h1.png);
+	}
+	.toolbar BUTTON.heading2 {
+		background-image: url(/cms/assets/buttons/h2.png);
+	}
+	.toolbar BUTTON.heading3 {
+		background-image: url(/cms/assets/buttons/h3.png);
+	}
+	.toolbar BUTTON.heading4 {
+		background-image: url(/cms/assets/buttons/h4.png);
+	}
+	.toolbar BUTTON.heading5 {
+		background-image: url(/cms/assets/buttons/h5.png);
+	}
+	.toolbar BUTTON.heading6 {
+		background-image: url(/cms/assets/buttons/h6.png);
+	}
+	.toolbar BUTTON.paragraph {
+		background-image: url(/cms/assets/buttons/paragraph.png);
+	}
+	.toolbar BUTTON.bold {
+		background-image: url(/cms/assets/buttons/bold.png);
+	}
+	.toolbar BUTTON.italic {
+		background-image: url(/cms/assets/buttons/italic.png);
+	}
+	.toolbar BUTTON.orderedlist {
+		background-image: url(/cms/assets/buttons/orderedlist.png);
+	}
+	.toolbar BUTTON.unorderedlist {
+		background-image: url(/cms/assets/buttons/unorderedlist.png);
+	}
+	.toolbar BUTTON.undo {
+		background-image: url(/cms/assets/buttons/undo.png);
+	}
+	.toolbar BUTTON.redo {
+		background-image: url(/cms/assets/buttons/redo.png);
+	}
+	.toolbar BUTTON.link {
+		background-image: url(/cms/assets/buttons/link.png);
+	}
+	.toolbar BUTTON.viewsource {
+		background-image: url(/cms/assets/buttons/viewsource.png);
+	}
+IFRAME.texteditor, TEXTAREA.texteditor {
 	background: #FFF;
+	min-height: 350px;
+	min-width: 600px;
 }

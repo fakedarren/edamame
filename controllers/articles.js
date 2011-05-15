@@ -60,11 +60,25 @@ module.exports = {
 			state: 0
 		});
 		article.save();
-		res.partial('articles/update', {
-			locals: {
-				article: article
-			}
+		articles.find({}, function(err, docs){
+			var live = [];
+			var draft = []
+			docs.forEach(function(record){
+				if (record.doc.state == 0){
+					draft.push(record.doc);
+				} else {
+					live.push(record.doc);
+				}
+			});
+			res.partial('articles/articles', {
+				locals: {
+					live: live,
+					draft: draft,
+					created: true
+				}
+			});
 		});
+
 	},
 	
 	update: function(req, res){
