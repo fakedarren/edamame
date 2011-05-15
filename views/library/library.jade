@@ -8,18 +8,9 @@
 			li Audio
 		article.image.library.current
 			ul.list
-				li
-					img(src="http://placekitten.com/200/300")
-				li
-					img(src="http://placekitten.com/500/300")
-				li
-					img(src="http://placekitten.com/200/600")
-				li
-					img(src="http://placekitten.com/200/300")
-				li
-					img(src="http://placekitten.com/500/342")
-				li
-					img(src="http://placekitten.com/744/234")
+				- each image in images
+					li
+						img(src: image.path)
 		article.video.library
 			ul.list
 				li

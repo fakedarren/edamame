@@ -1,3 +1,6 @@
+var mongoose = require("mongoose");
+mongoose.connect('mongodb://localhost/cms');
+mongoose.model('assets', require('../models/asset').assets);
 
 module.exports = {
 
@@ -9,7 +12,20 @@ module.exports = {
 	},
 	
 	library: function(req, res){
-		res.partial('library/library');
+		var assets = mongoose.model('assets');
+		assets.find({}, function(err, docs){
+			var images = [];
+			docs.forEach(function(record){
+				if (record.doc.type == 'image'){
+					images.push(record.doc);
+				}
+			});
+			res.partial('library/library', {
+				locals: {
+					images: images
+				}
+			});
+		});
 	}
 	
 };
