@@ -41,6 +41,19 @@ Element.implement({
 		context.getElements('.texteditor').each(function(editor){
 			new CMS.TextEditor(editor);
 		});
+		context.getElements('form').addEvent('submit', function(evt){
+			evt.stop();
+			new Request({
+				url: this.get('action'),
+				method: this.get('method'),
+				data: this,
+				onSuccess: function(response){
+					$('cms-body').empty();
+					$('cms-body').set('html', response);
+					initUI($('cms-body'));
+				}
+			}).send();
+		});
 	};
 	initUI(document.body);
 	
