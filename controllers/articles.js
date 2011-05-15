@@ -53,9 +53,16 @@ module.exports = {
 	},
 	
 	saveNew: function(req, res){
-		res.partial('articles/create', {
+		var articles = mongoose.model('articles');
+		var article = new articles({
+			title: req.body.title,
+			body: req.body.body,
+			state: 0
+		});
+		article.save();
+		res.partial('articles/update', {
 			locals: {
-				successful: true
+				article: article
 			}
 		});
 	},

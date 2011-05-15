@@ -1,3 +1,9 @@
+.toolbar {
+}
+	.toolbar HR {
+		display: inline;
+		margin: 0 5px;
+	}
 IFRAME.texteditor {
 	background: #FFF;
 }

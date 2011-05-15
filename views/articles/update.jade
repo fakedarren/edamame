@@ -14,8 +14,11 @@
 			article.articles.create-article.current
 				form(method: 'post')
 					fieldset
+						input(type: 'text', name: 'title', value: article.title)
 						div.toolbar
 							button.bold.button(type: 'button') Bold
+							button.italic.button(type: 'button') Italic
+							<hr />
 							button.viewsource.button(type: 'button') View Source
 						textarea.texteditor(name: 'body')
 							#{article.body}

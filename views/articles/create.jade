@@ -14,9 +14,10 @@
 			article.articles.create-article.current
 				form(method: 'post')
 					fieldset
+						input(type: 'text', name: 'title')
 						div.toolbar
 							button.bold.button(type: 'button') Bold
 							button.viewsource.button(type: 'button') View Source
-						textarea.texteditor
+						textarea.texteditor(name: 'body')
 			article.articles.create-article
 				p options
