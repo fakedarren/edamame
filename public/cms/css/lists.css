@@ -12,8 +12,21 @@
 		margin: 0 0 5px;
 		padding: 5px;
 	}
+		.cms-window .list LI SPAN {
+			float: left;
+		}
+		.cms-window .list LI A {
+			float: right;
+		}
 	.cms-window .list LI:HOVER {
 		background: #F4F4F4;
+	}
+	.cms-window .list LI:AFTER {
+		clear: both;
+		content: ".";
+		display: block;
+		height: 0;
+		visibility: hidden;
 	}
 	.cms-window .list LI:LAST-CHILD {
 		margin: 0;

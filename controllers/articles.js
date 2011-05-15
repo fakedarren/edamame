@@ -58,7 +58,7 @@ module.exports = {
 		var article = new articles({
 			title: req.body.title,
 			body: req.body.body,
-			state: 0
+			state: req.body.state
 		});
 		article.save();
 		articles.find({}, function(err, docs){
@@ -79,7 +79,6 @@ module.exports = {
 				}
 			});
 		});
-
 	},
 	
 	update: function(req, res){
@@ -102,6 +101,8 @@ module.exports = {
 		};
 		articles.findById(req.params.id, function (err, article){
 			article.body = req.body.body;
+			article.title = req.body.title;
+			article.state = req.body.state;
 			article.save();
 			articles.find(match, function(err, docs){
 				res.partial('articles/update', {
