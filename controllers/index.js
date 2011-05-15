@@ -1,3 +1,7 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var db = mongoose.connect('mongodb://localhost/cms');
+
 /*
 Credit: https://github.com/jettro/nodejstryout
 */
@@ -78,11 +82,6 @@ module.exports = {
 	},
 	
 	install: function(req, res){
-
-		var mongoose = require('mongoose');
-		var Schema = mongoose.Schema;
-		var db = mongoose.connect('mongodb://localhost/cms');
-		
 		var install = require('../install/install');
 		install.forEach(function(module){
 			
@@ -103,7 +102,7 @@ module.exports = {
 				m.save();
 			});
 		});
-		res.send('Install script complete');
+		res.send('Install script complete');	
 	}
 	
 };
