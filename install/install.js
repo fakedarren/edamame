@@ -1,1 +1,1 @@
-module.exports = ['pages', 'articles', 'assets'];
+module.exports = ['pages', 'articles', 'assets', 'modules', 'grids'];
