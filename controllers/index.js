@@ -1,7 +1,7 @@
+var config = require('../config/configuration');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var db = mongoose.connect('mongodb://localhost/cms');
-
+mongoose.connect(config.database);
 /*
 Credit: https://github.com/jettro/nodejstryout
 */
@@ -42,7 +42,6 @@ module.exports = {
 	logIn: function(req, res){
 		var sys = require('sys');
 		var OAuth = require('oauth').OAuth;
-		var config = require('../config/configuration');
 
 		oa = new OAuth(
 			"https://api.twitter.com/oauth/request_token",

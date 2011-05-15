@@ -1,5 +1,6 @@
+var config = require('../config/configuration');
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/cms');
+mongoose.connect(config.database);
 mongoose.model('articles', require('../models/article').articles);
 
 module.exports = {
