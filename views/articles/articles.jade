@@ -12,7 +12,9 @@
 			ul.list
 				- each article in live
 					li #{article.title}
+						a(href: '/cms/articles/update/' + article._id) edit
 		article.articles
 			ul.list
 				- each article in draft
 					li #{article.title}
+						a(href: '/cms/articles/update/' + article._id) edit

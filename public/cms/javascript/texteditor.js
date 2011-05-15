@@ -30,6 +30,7 @@ CMS.TextEditor = new Class({
 		this.textarea.getParent('form').addEvent('submit', function(){
 			self.fireEvent('submit', self);
 		});
+		this.textarea.store('texteditor', this);
 	},
 	
 	setUpToolbar: function(){
@@ -147,7 +148,6 @@ CMS.TextEditor = new Class({
 	
 	updateTextarea: function()	{
 		if(this.wysiwygview)	this.textarea.value = this.framebody.innerHTML;
-		this.cleanHTML();
 	},
 	
 	wordcount: function()	{

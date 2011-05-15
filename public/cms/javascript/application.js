@@ -43,6 +43,9 @@ Element.implement({
 		});
 		context.getElements('form').addEvent('submit', function(evt){
 			evt.stop();
+			this.getElements('textarea.texteditor').each(function(editor){
+				editor.retrieve('texteditor').updateTextarea();
+			});
 			new Request({
 				url: this.get('action'),
 				method: this.get('method'),

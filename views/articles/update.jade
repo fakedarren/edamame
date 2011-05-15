@@ -1,0 +1,23 @@
+.tabbed.fullwidth.cms-window
+	div
+		form(method: 'post', 'action': '/cms/articles/update/' + article._id)
+			header
+				h2 Update '#{article.title}'
+			ul.functions
+				li
+					button(type="submit") Save
+				li
+					a(href="/cms/articles") Cancel
+			ul.tabs
+				li.current Content
+				li Options
+			article.articles.create-article.current
+				form(method: 'post')
+					fieldset
+						div.toolbar
+							button.bold.button(type: 'button') Bold
+							button.viewsource.button(type: 'button') View Source
+						textarea.texteditor(name: 'body')
+							#{article.body}
+			article.articles.create-article
+				p options
