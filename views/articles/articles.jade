@@ -7,15 +7,9 @@
 			li Draft
 		article.articles.current
 			ul.list
-				li Article 1
-				li Article 2
-				li Article 3
-				li Article 4
-				li Article 5
+				- each article in live
+					li #{article.title}
 		article.articles
 			ul.list
-				li Draft article 1
-				li Draft article 2
-				li Draft article 3
-				li Draft article 4
-				li Draft article 5
+				- each article in draft
+					li #{article.title}
