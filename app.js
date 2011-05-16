@@ -19,7 +19,7 @@ app.configure(function(){
 var controller = require('./classes/controller.class');
 controller.initialize(app);
 
-app.get('debug', function(req, res){
+app.get('/debug', function(req, res){
 	res.send(process.env['DUOSTACK_DB_MONGODB']);
 });
 
