@@ -1,6 +1,6 @@
 var express = require('express'),
     app = express(),
-    controller = require('./classes/controller.class');
+    controller = require('./backend/classes/controller.class');
 
 
 app.set('view engine', 'jade');
