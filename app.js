@@ -3,18 +3,18 @@ var express = require('express'),
     controller = require('./classes/controller.class');
 
 
+app.set('view engine', 'jade');
+
+
+app.use(express.static(__dirname + '/public'));
+app.use(express.errorHandler());
+app.use(express.cookieParser());
+app.use(express.session({
+    secret: "My simple node.js CMS" 
+}));
+
+
 controller.initialize(app);
-
-
-app.configure(function(){
-    app.set('view engine', 'jade');
-    app.use(express.static(__dirname + '/public'));
-    app.use(express.cookieParser());
-    app.use(express.session({
-        secret: "My simple node.js CMS" 
-    }));
-
-});
 
 
 ['/', /^\/[^cms?].*/i].forEach(function(regex){

@@ -1,0 +1,50 @@
+!!! 5
+html(lang="en")
+
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width", initial-scale="1.0")
+        title Node CMS
+        link(rel="stylesheet", href="/backend/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/backend/css/bootstrap.responsive.min.css")
+        link(rel="stylesheet", href="/backend/css/backend.css")
+
+    body
+
+        div.navbar.navbar-inverse.navbar-fixed-top
+            div.navbar-inner
+                div.container
+                    a.brand(href="/cms") Node CMS
+                    
+                    ul.nav
+                        li.dropdown
+                            a.dropdown-toggle(data-toggle="dropdown", href="#") Content 
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href="#") Pages
+                                    a(href="#") Modules
+                        li.dropdown
+                            a.dropdown-toggle(data-toggle="dropdown", href="#") Library 
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href="#") Images
+                                    a(href="#") Files
+                                    a(href="#") Videos
+                        li
+                            a(href="#") Settings
+
+                    ul.nav.pull-right
+                        li.dropdown
+                            a.dropdown-toggle(data-toggle="dropdown", href="#") #{username} 
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href="#") My Account
+                                    a(href="#") Log Out
+
+                    form.navbar-search.pull-right
+                        input.search-query(type="text", placeholder="Search")
+
+        block content
