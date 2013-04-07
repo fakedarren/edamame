@@ -7,17 +7,17 @@ block content
 
             div.span9
                 h1 Pages
-                
+
                 ul.nav.nav-tabs
                     li.active
-                        a(href="#") Main Navigation
+                        a(href="#tab-main-navigation", data-toggle="tab") Main Navigation
                     li
-                        a(href="#") Footer Navigation
+                        a(href="#tab-footer-navigation", data-toggle="tab") Footer Navigation
 
                 div.tab-content
-                    div.tab-pane.active
+                    div.tab-pane.active#tab-main-navigation
                         | Hi!
-                    div.tab-pane
+                    div.tab-pane#tab-footer-navigation
                         | Hidden
 
             div.span3
