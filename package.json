@@ -1,19 +1,15 @@
 {
-  "name": "mootoolscms",
-  "version": "0.0.0",
-  "repository": {},
-  "directories": {
-    "lib": ""
-  },
-  "engines": {
-    "node": "*"
-  },
-  "dependencies": {
-    "express": "*",
-    "jade": "*",
-    "mongoose": "*",
-    "oauth": "*",
-    "ejs": "*",
-    "mootools": "*"
-  }
+    "name": "fakedarren-nodecms",
+    "version": "0.0.2dev",
+    "engines": {
+        "node": "*"
+    },
+    "dependencies": {
+        "ejs": "*",
+        "express": "*",
+        "jade": "*",
+        "mongoose": "*",
+        "oauth": "*",
+        "prime": "*"
+    }
 }

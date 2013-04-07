@@ -1,68 +1,66 @@
-var fs = require("fs");
-require('mootools');
-
 /*
-https://github.com/MaxGfeller/mongee/
+Credit: https://github.com/MaxGfeller/mongee/
 */
 
-var Controller = new Class({
 
-	initialize: function(app){
-		this.app = app;
-		this.parseControllers();
-	},
-	
-	parseControllers: function(){
-		var self = this;
-		fs.readdir(__dirname + '/../controllers', function(err, files){
-			if (err) throw err;
-			files.forEach(function(file){
-				console.log("loading controller " + file);
-				self.loadController(file);
-			});
-		});
-	},
-	
-	loadController: function(file){
-		
-		var app = this.app;
-		var controller = require('../controllers/' + file);
-		var routes = controller["routes"];
-		var thisAction;
-		
-		Object.keys(controller).map(function(action){
-			var fn = controller[action];
-			if(typeof(fn) === "function"){
-				if(thisAction = routes[action]){
-					switch(thisAction.method){
-						case 'get':
-							app.get(thisAction.url, fn);
-							console.log("initialized get " + thisAction.url);
-							break;
-						case 'post':
-							app.post(thisAction.url, fn);
-							console.log("initialized post " + thisAction.url);
-							break;
-						case 'put':
-							app.put(thisActiona.url, fn);
-							console.log("initialized put " + thisAction.url);
-							break;
-						case 'delete':
-							app.del(thisAction.url, fn);
-							console.log("initialized delete " + thisAction.url);
-							break;
-					}
-				} else {
-					console.log("WARNING: no mapping for " + action + " defined");
-				}
-			}
-		});
-	}
+var fs = require("fs"),
+    prime = require('prime');
+
+
+var Controller = prime({
+
+    constructor: function(app){
+        this.app = app;
+        this.parseControllers();
+    },
+    
+    parseControllers: function(){
+        var self = this;
+        fs.readdir(__dirname + '/../controllers', function(err, files){
+            if (err) throw err;
+            files.forEach(function(file){
+                console.log("loading controller " + file);
+                self.loadController(file);
+            });
+        });
+    },
+    
+    loadController: function(file){
+        var app = this.app,
+            controller = require('../controllers/' + file),
+            routes = controller["routes"];
+        
+        Object.keys(controller).map(function(action){
+            var fn = controller[action];
+
+            if (typeof fn === "function"){
+                switch (routes[action].method){
+                    case 'get':
+                        app.get(routes[action].url, fn);
+                        console.log("initialized get " + routes[action].url);
+                        break;
+                    case 'post':
+                        app.post(routes[action].url, fn);
+                        console.log("initialized post " + routes[action].url);
+                        break;
+                    case 'put':
+                        app.put(routes[action].url, fn);
+                        console.log("initialized put " + routes[action].url);
+                        break;
+                    case 'delete':
+                        app.del(routes[action].url, fn);
+                        console.log("initialized delete " + routes[action].url);
+                        break;
+                }
+            }
+        });
+    }
 
 });
 
+
 module.exports = {
-	initialize: function(app) {
-		new Controller(app);
-	}
+    initialize: function(app){
+        new Controller(app);
+    }
 }
