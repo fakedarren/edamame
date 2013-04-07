@@ -3,7 +3,7 @@ Credit: https://github.com/jettro/nodejstryout
 */
 
 
-var config = require('../config/configuration'),
+var config = require('../../config/configuration'),
     mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 

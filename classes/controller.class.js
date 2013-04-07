@@ -15,19 +15,24 @@ var Controller = prime({
     },
     
     parseControllers: function(){
-        var self = this;
-        fs.readdir(__dirname + '/../controllers', function(err, files){
-            if (err) throw err;
-            files.forEach(function(file){
-                console.log("loading controller " + file);
-                self.loadController(file);
+        var self = this,
+            root = __dirname + '/../controllers',
+            folders = [root + '/backend', root + '/frontend'];
+
+        folders.forEach(function(controllers, i){
+            fs.readdir(controllers, function(err, files){
+                if (err) throw err;
+                files.forEach(function(file){
+                    console.log("loading controller " + file);
+                    self.loadController(file, folders[i]);
+                });
             });
         });
     },
     
-    loadController: function(file){
+    loadController: function(file, folder){
         var app = this.app,
-            controller = require('../controllers/' + file),
+            controller = require(folder + "/" + file),
             routes = controller["routes"];
         
         Object.keys(controller).map(function(action){

@@ -1,0 +1,29 @@
+extends ../backend-layout
+
+block content
+
+    div.container
+        div.row
+
+            div.span9
+                h1 Pages
+                
+                ul.nav.nav-tabs
+                    li.active
+                        a(href="#") Main Navigation
+                    li
+                        a(href="#") Footer Navigation
+
+                div.tab-content
+                    div.tab-pane.active
+                        | Hi!
+                    div.tab-pane
+                        | Hidden
+
+            div.span3
+                div.well
+                    ul
+                        li
+                            a(href="#") Add a new section
+                        li
+                            a(href="#") Add a new page
