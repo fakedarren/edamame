@@ -1,31 +1,29 @@
-var express = require('express');
-var jade = require('jade');
+var express = require('express'),
+    app = express(),
+    controller = require('./classes/controller.class');
 
-require('mootools');
 
-var app = express();
+controller.initialize(app);
+
 
 app.configure(function(){
     app.set('view engine', 'jade');
-    app.set('views', __dirname + '/views');
-    app.set('view options', { layout: 'shared/layout' });
-	app.use(express.methodOverride());
-	app.use(express.static(__dirname + '/public'));
-	app.use(express.bodyParser());
-	app.use(express.cookieParser());
-	app.use(express.session({ secret: "MooToolsFTW" }));
+    app.use(express.static(__dirname + '/public'));
+    app.use(express.cookieParser());
+    app.use(express.session({
+        secret: "My simple node.js CMS" 
+    }));
+
 });
 
-var controller = require('./classes/controller.class');
-controller.initialize(app);
 
-app.get(/^\/[^cms?].*/, function(req, res){
-	res.render('frontend/page.ejs', {
-		layout: false,
-		locals: {
-			path: req.url
-		}
-	});
+['/', /^\/[^cms?].*/i].forEach(function(regex){
+    app.get(regex, function(req, res){
+        res.render('frontend/page.ejs', {
+            path: req.url
+        });
+    });
 });
+
 
 app.listen(3000);
