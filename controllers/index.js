@@ -1,7 +1,6 @@
 var config = require('../config/configuration');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var db = mongoose.connect(config.database);
 /*
 Credit: https://github.com/jettro/nodejstryout
 */

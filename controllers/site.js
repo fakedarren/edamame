@@ -1,7 +1,7 @@
 var config = require('../config/configuration');
 var mongoose = require("mongoose");
-mongoose.connect(config.database);
-mongoose.model('navItems', require('../models/site').navItems);
+//mongoose.connect(config.database);
+//mongoose.model('navItems', require('../models/site').navItems);
 
 module.exports = {
 

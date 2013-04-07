@@ -3,7 +3,7 @@ var jade = require('jade');
 
 require('mootools');
 
-var app = express.createServer();
+var app = express();
 
 app.configure(function(){
     app.set('view engine', 'jade');
@@ -19,10 +19,6 @@ app.configure(function(){
 var controller = require('./classes/controller.class');
 controller.initialize(app);
 
-app.get('/debug', function(req, res){
-	res.send(process.env['DUOSTACK_DB_MONGODB']);
-});
-
 app.get(/^\/[^cms?].*/, function(req, res){
 	res.render('frontend/page.ejs', {
 		layout: false,
@@ -32,4 +28,4 @@ app.get(/^\/[^cms?].*/, function(req, res){
 	});
 });
 
-app.listen(80);
+app.listen(3000);

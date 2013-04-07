@@ -1,7 +1,7 @@
 var config = require('../config/configuration');
 var mongoose = require("mongoose");
-mongoose.connect(config.database);
-mongoose.model('articles', require('../models/article').articles);
+//mongoose.connect(config.database);
+//mongoose.model('articles', require('../models/article').articles);
 
 module.exports = {
 
@@ -29,68 +29,27 @@ module.exports = {
 	},
 	
 	articles: function(req, res){
-		var articles = mongoose.model('articles');
-		articles.find({}, function(err, docs){
-			var live = [];
-			var draft = []
-			docs.forEach(function(record){
-				if (record.doc.state == 0){
-					draft.push(record.doc);
-				} else {
-					live.push(record.doc);
-				}
-			});
-			res.partial('articles/articles', {
-				locals: {
-					live: live,
-					draft: draft
-				}
-			});
+		res.render('articles/articles', {
+			live: [],
+			draft: []
 		});
 	},
 	
 	create: function(req, res){
-		res.partial('articles/create');
+		res.render('articles/create');
 	},
 	
 	saveNew: function(req, res){
-		var articles = mongoose.model('articles');
-		var article = new articles({
-			title: req.body.title,
-			body: req.body.body,
-			state: req.body.state
-		});
-		article.save();
-		articles.find({}, function(err, docs){
-			var live = [];
-			var draft = []
-			docs.forEach(function(record){
-				if (record.doc.state == 0){
-					draft.push(record.doc);
-				} else {
-					live.push(record.doc);
-				}
-			});
-			res.partial('articles/articles', {
-				locals: {
-					live: live,
-					draft: draft,
-					created: true
-				}
-			});
+		res.render('articles/articles', {
+			live: live,
+			draft: draft,
+			created: true
 		});
 	},
 	
 	update: function(req, res){
-		var articles = mongoose.model('articles');
-		articles.find({
-			_id: req.params.id
-		}, function(err, docs){
-			res.partial('articles/update', {
-				locals: {
-					article: docs[0].doc
-				}
-			});
+		res.render('articles/update', {
+			article: []
 		});
 	},
 	

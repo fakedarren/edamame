@@ -1,7 +1,13 @@
 var config = require('../config/configuration');
 var mongoose = require("mongoose");
-mongoose.connect(config.database);
-mongoose.model('assets', require('../models/asset').assets);
+
+//mongoose.connect(config.database);
+
+//var db = mongoose.connection;
+/*db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+	mongoose.model('assets', require('../models/asset').assets);
+});*/
 
 module.exports = {
 
@@ -13,7 +19,7 @@ module.exports = {
 	},
 	
 	library: function(req, res){
-		var assets = mongoose.model('assets');
+		/*var assets = mongoose.model('assets');
 		assets.find({}, function(err, docs){
 			var images = [];
 			docs.forEach(function(record){
@@ -26,6 +32,9 @@ module.exports = {
 					images: images
 				}
 			});
+		});*/
+		res.render('library/library', {
+			images: []
 		});
 	}
 	
