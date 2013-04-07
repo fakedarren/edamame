@@ -5,7 +5,7 @@ block content
     div.container
         div.row
 
-            div.span9
+            div.span9#pages
                 h1 Pages
 
                 ul.nav.nav-tabs
@@ -16,10 +16,8 @@ block content
 
                 div.tab-content
                     div.tab-pane.active#tab-main-navigation
-                        | Hi!
                     div.tab-pane#tab-footer-navigation
-                        | Hidden
-
+ 
             div.span3
                 div.well
                     ul
@@ -27,3 +25,11 @@ block content
                             a(href="#") Add a new section
                         li
                             a(href="#") Add a new page
+
+append scripts
+    script(src="/backend/js/app/pages.js")
+
+block templates
+
+    script#template-page-list-item(type="text/template")
+        li {{title}}

@@ -8,6 +8,7 @@
         "ejs": "*",
         "express": "*",
         "jade": "*",
+        "lodash": "*",
         "mongoose": "*",
         "oauth": "*",
         "prime": "*"
