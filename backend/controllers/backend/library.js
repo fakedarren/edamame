@@ -56,12 +56,20 @@ api = {
             case 'files':
                 res.json([
                     {
-                        id: 1,
+                        id: 3,
                         src: 'word.docx'
                     },
                     {
-                        id: 2,
+                        id: 4,
                         src: 'excel.xlsx'
+                    }
+                ]);
+                break;
+            case 'videos':
+                res.json([
+                    {
+                        id: 5,
+                        src: 'http://www.youtube.com/watch?v=dQw4w9WgXcQ'
                     }
                 ]);
                 break;

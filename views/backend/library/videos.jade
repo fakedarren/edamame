@@ -6,8 +6,23 @@ block content
         div.row
 
             div.span9
-                h1 Videos
-                
+                div.page-header
+                    h1 Videos
+                ul.thumbnails#videos-library
+
             div.span3
                 div.well
                     
+
+block scripts
+    script(src="/backend/js/app/videos.js")
+
+
+block templates
+    script#template-images-list-item(type="text/template")
+        li.span4
+            div.thumbnail
+                iframe(src="{{src}}", frameborder="0", style="width: 300px; height: 200px;")
+                div.caption
+                    h3 Video
+                    p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
