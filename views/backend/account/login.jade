@@ -1,0 +1,43 @@
+!!! 5
+html(lang="en")
+
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width", initial-scale="1.0")
+        title Node CMS
+        link(rel="stylesheet", href="/backend/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/backend/css/bootstrap.responsive.min.css")
+        link(rel="stylesheet", href="/backend/css/backend.css")
+
+    body
+
+        div.modal
+            div.modal-header
+                h3 Log In
+            div.modal-body
+                form.form-horizontal
+                    div.alert.alert-error
+                        p You can currently only sign in with Twitter.
+                    div.control-group
+                        label.control-label(for="email") Email
+                        div.controls
+                            input#email(type="email", placeholder="Email Address")
+                    div.control-group
+                        label.control-label(for="password") Password
+                        div.controls
+                            input#password(type="password", placeholder="Password")
+                    div.control-group
+                        div.controls
+                            label.checkbox
+                                input(type="checkbox")
+                                | Remember me
+                            button.btn(type="submit") Sign In
+                    div.divider
+                    div.control-group
+                        div.controls
+                            p
+                                a(href="/cms/account/login-with-twitter") Sign in with Twitter
+            div.modal-footer
+                p &copy;2013 fakedarren
+
+        div.modal-backdrop
