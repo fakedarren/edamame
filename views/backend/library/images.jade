@@ -6,8 +6,24 @@ block content
         div.row
 
             div.span9
-                h1 Images
-                
+                div.page-header
+                    h1 Media
+                div#images-library
+ 
             div.span3
                 div.well
                     
+
+block scripts
+    script(src="/backend/js/app/images.js")
+
+
+block templates
+    script#template-images-list-item(type="text/template")
+        div.media
+            a.close(href="#") &times;
+            a.pull-left(href="#")
+                img.media-object(src="{{src}}")
+            div.media-body
+                h4.media-heading Test
+                p Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
