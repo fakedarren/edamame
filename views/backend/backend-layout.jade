@@ -48,8 +48,10 @@ html(lang="en")
                         input.search-query(type="text", placeholder="Search")
 
         block content
-
+   
+    include backend-scripts
     block scripts
-        include backend-scripts
+        script(src="/backend/js/app/generic.js")
+
 
     block templates

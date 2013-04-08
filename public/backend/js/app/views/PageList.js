@@ -10,6 +10,12 @@ define([
 
     return Backbone.View.extend({
 
+        events: {
+            'click #create-page button': 'create',
+            'click .edit': 'edit',
+            'click .remove': 'remove',
+        },
+
         initialize: function(){
             this.collection = new PageList();
             this.collection.fetch();
@@ -25,6 +31,21 @@ define([
             });
 
             this.$el.html(html);
+        },
+
+        create: function(evt){
+            console.log('create');
+        },
+
+        remove: function(evt){
+            evt.preventDefault();
+
+            var id = $(evt.currentTarget).attr('data-id'),
+                model = this.collection.get(id);
+
+            model.destroy(function(){
+                this.collection.sync();
+            });
         }
 
     });

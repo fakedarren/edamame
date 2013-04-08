@@ -23,7 +23,7 @@ api = {
             method: 'put'
         },
         deletePage: {
-            url: '/cms/pages',
+            url: '/cms/pages/:id',
             method: 'delete'
         }
     },
@@ -73,6 +73,10 @@ module.exports = _.merge(api, {
             url: '/cms/content/pages',
             method: 'get'
         },
+        newPage: {
+            url: '/cms/content/new-page',
+            method: 'get'   
+        },
         modules: {
             url: '/cms/content/modules',
             method: 'get'
@@ -81,6 +85,10 @@ module.exports = _.merge(api, {
     
     pages: function(req, res){
         res.render('backend/content/pages');
+    },
+
+    newPage: function(req, res){
+        res.render('backend/content/new-page');
     },
     
     modules: function(req, res){

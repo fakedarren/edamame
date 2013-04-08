@@ -22,14 +22,18 @@ block content
                 div.well
                     ul
                         li
-                            a(href="#") Add a new section
+                            a(href="/cms/content/new-page", data-toggle="modal", data-target="#modal") Add a new Page
                         li
-                            a(href="#") Add a new page
+                            a(href="#") Add a new section
 
-append scripts
+    div#modal.modal.hide
+        div.modal-body
+
+block scripts
     script(src="/backend/js/app/pages.js")
 
 block templates
 
     script#template-page-list-item(type="text/template")
         li {{title}}
+            a.remove.pull-right(href="#", data-id="\{{id}}") Delete
