@@ -47,11 +47,7 @@ api = {
     readAllAssets: function(req, res){
         var assets = mongoose.model('assets');
         assets.find({type: req.params.type}, function(err, docs){
-            var assets = [];
-            docs.forEach(function(record){
-                assets.push(record.doc);
-            });
-            res.json(assets);
+            res.json(docs);
         });
     },
 
