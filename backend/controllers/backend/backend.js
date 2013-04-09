@@ -1,5 +1,8 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var config = require('../../config/configuration'),
+    mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    db = mongoose.connect(config.database),
+    _ = require('lodash');
 
 
 module.exports = {
@@ -34,27 +37,35 @@ module.exports = {
     },
   
     install: function(req, res){
-        var install = require('../install/install');
+        var path = '../../install/',
+            install = require(path + 'install'),
+            state = [];
+        
         install.forEach(function(module){
-            
-            var item = require('../install/' + module);
-            
-            var Model = new Schema(item.schema);
-            mongoose.model(item.name, Model);
+            var item = require(path + module),
+                name = item.model.name,
+                schema = item.model.schema;
 
-            var ModelObject = db.model(item.name);
-            var m = new ModelObject();
+            mongoose.model(name, schema);
+            
+            var ModelObject = db.model(name),
+                m = new ModelObject();
+            
             m.collection.drop();
 
-            item.records.each(function(record){
+            _(item.records).each(function(record){
                 var m = new ModelObject();
-                Object.each(record, function(value, key){
-                    m[key] = value;
-                });
+                for (var i in record){
+                    m[i] = record[i];
+                }
                 m.save();
             });
+
+            state.push('Added ' + name + ' collection and ' + item.records.length + ' records');
         });
-        res.send('Install script complete');    
+
+        state.push('Install script complete!');
+        res.send(state.join('<br />'));
     }
     
 };
