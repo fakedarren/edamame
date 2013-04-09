@@ -1,5 +1,10 @@
-var _ = require("lodash"),
+var mongoose = require("mongoose"),
+    assetSchema = require('../../models/asset').schema,
+    _ = require("lodash"),
     api;
+
+
+mongoose.model('assets', assetSchema);
 
 
 api = {
@@ -40,40 +45,14 @@ api = {
     },
     
     readAllAssets: function(req, res){
-        switch (req.params.type){
-            case 'images':
-                res.json([
-                    {
-                        id: 1,
-                        src: 'http://www.placecage.com/c/64/64'
-                    },
-                    {
-                        id: 2,
-                        src: 'http://www.placecage.com/64/64'
-                    }
-                ]);
-                break;
-            case 'files':
-                res.json([
-                    {
-                        id: 3,
-                        src: 'word.docx'
-                    },
-                    {
-                        id: 4,
-                        src: 'excel.xlsx'
-                    }
-                ]);
-                break;
-            case 'videos':
-                res.json([
-                    {
-                        id: 5,
-                        src: 'http://www.youtube.com/watch?v=dQw4w9WgXcQ'
-                    }
-                ]);
-                break;
-        }
+        var assets = mongoose.model('assets');
+        assets.find({type: req.params.type}, function(err, docs){
+            var assets = [];
+            docs.forEach(function(record){
+                assets.push(record.doc);
+            });
+            res.json(assets);
+        });
     },
 
     updateAsset: function(req, res){

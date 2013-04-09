@@ -8,7 +8,7 @@ require([
 
     window.foo = new AssetListView({
         el: '#files-library',
-        type: 'files'
+        type: 'file'
     });
 
 });

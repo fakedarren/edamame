@@ -8,7 +8,7 @@ require([
 
     window.foo = new AssetListView({
         el: '#images-library',
-        type: 'images'
+        type: 'image'
     });
 
 });
