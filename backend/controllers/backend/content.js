@@ -1,6 +1,10 @@
-
-var _ = require("lodash"),
+var mongoose = require("mongoose"),
+    pageSchema = require('../../models/page').schema,
+    _ = require("lodash"),
     api;
+
+
+mongoose.model('pages', pageSchema);
 
 
 api = {
@@ -41,16 +45,10 @@ api = {
     },
     
     readAllPages: function(req, res){
-        res.json([
-            {
-                id: 1,
-                title: 'My Page'
-            },
-            {
-                id: 2,
-                title: 'My Other Page'
-            }
-        ]);
+        var pages = mongoose.model('pages');
+        pages.find({}, function(err, docs){
+            res.json(docs);
+        });
     },
 
     updatePage: function(req, res){
