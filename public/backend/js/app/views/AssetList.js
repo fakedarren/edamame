@@ -25,7 +25,9 @@ define([
                 template = $('#template-images-list-item').html();
 
             this.collection.forEach(function(page){
-                html += Mustache.render(template, page.toJSON());
+                var record = page.toJSON();
+                record.extension = record.src.slice(record.src.lastIndexOf('.') + 1);
+                html += Mustache.render(template, record);
             });
 
             this.$el.html(html);

@@ -20,7 +20,7 @@ block scripts
 
 block templates
     script#template-images-list-item(type="text/template")
-        div.media
+        div(class="media {{extension}}")
             a.close(href="#") &times;
             a.pull-left(href="#")
                 img.media-object(src="{{src}}")
