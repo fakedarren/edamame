@@ -27,7 +27,7 @@ var Plugins = prime({
     },
 
     registerPlugin: function(plugin){
-        console.log('registering plugin ' + plugin + '\n');
+        console.log('\nregistering plugin ' + plugin);
     }
 
 });

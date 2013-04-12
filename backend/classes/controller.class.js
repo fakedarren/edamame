@@ -23,7 +23,7 @@ var Controller = prime({
             fs.readdir(controllers, function(err, files){
                 if (err) throw err;
                 files.forEach(function(file){
-                    console.log("loading controller " + file);
+                    console.log("\nloading controller " + file);
                     self.loadController(file, folders[i]);
                 });
             });
