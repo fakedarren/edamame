@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
-    controller = require('./backend/classes/controller.class');
+    controller = require('./backend/classes/controller.class'),
+    Plugins = require('./backend/classes/plugins.class.js');
 
 
 app.set('view engine', 'jade');
@@ -15,6 +16,8 @@ app.use(express.session({
 
 
 controller.initialize(app);
+
+new Plugins(app);
 
 
 ['/', /^\/[^cms?].*/i].forEach(function(regex){
