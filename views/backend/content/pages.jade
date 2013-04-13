@@ -31,14 +31,14 @@ block templates
         ul.nav.nav-tabs
             {{#each this}}
             li
-                a(href="#section-{{this._id}}", data-toggle="tab") {{this.title}} 
+                a(href="#section-{{this._id}}", data-toggle="tab") {{this.title}}
             {{/each}}
 
         div.tab-content
             {{#each this}}
-            div.tab-pane.active(id="section-\{{this._id}}")
+            div.tab-pane(id="section-\{{this._id}}")
                 ul
-                {{#each pages}}
-                li {{this.title}}
-                {{/each}}
+                    {{#each pages}}
+                    li {{this.title}}
+                    {{/each}}
             {{/each}}

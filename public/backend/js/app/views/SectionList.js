@@ -24,9 +24,8 @@ define([
                 template = Handlebars.compile(source),
                 html = template(this.collection.toJSON());
 
-            console.log(this.collection.toJSON());
-
             this.$el.html(html);
+            this.$el.find('.nav-tabs a').eq(0).click();
         },
 
         create: function(evt){
