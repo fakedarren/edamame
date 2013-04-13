@@ -1,0 +1,25 @@
+extends ../backend-layout
+
+block content
+
+    div.container
+        div.row
+
+            div.span9
+                div.page-header
+                    h1 Plugins
+                
+                ul.nav.nav-tabs
+                    li.active
+                        a(href="#tab-plugins", data-toggle="tab") Installed Plugins
+
+                div.tab-content
+                    div.tab-pane.active#tab-plugins
+                        ul
+                        each plugin in plugins
+                            li #{plugin.name}
+
+                
+            div.span3
+                div.well
+                    

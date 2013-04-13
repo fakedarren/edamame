@@ -4,6 +4,8 @@ var fs = require("fs"),
 
 var Plugins = prime({
 
+    collection: [],
+
     constructor: function(app){
         this.app = app;
         this.parsePlugins();
@@ -27,10 +29,17 @@ var Plugins = prime({
     },
 
     registerPlugin: function(plugin){
+        var config = require(plugin + '/edamame.json');
+        this.collection.push(config);
         console.log('\nregistering plugin ' + plugin);
     }
 
 });
 
 
-module.exports = Plugins;
+module.exports = {
+    initialize: function(app){
+        var plugins = new Plugins(app);
+        return plugins.collection;
+    }
+};

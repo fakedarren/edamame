@@ -1,14 +1,16 @@
 module.exports = {
 
     routes: {
-        'settings': {
-            'url': '/cms/settings',
+        'plugins': {
+            'url': '/cms/settings/plugins',
             'method': 'get'
         }
     },
     
-    settings: function(req, res){
-        res.render('backend/settings/settings');
+    plugins: function(req, res){
+        res.render('backend/settings/plugins', {
+            plugins: global.plugins
+        });
     }
     
 };

@@ -32,9 +32,13 @@ html(lang="en")
                                     a(href="/cms/library/images") Images
                                     a(href="/cms/library/files") Files
                                     a(href="/cms/library/videos") Videos
-                        li
-                            a(href="/cms/settings") Settings
-
+                        li.dropdown
+                            a.dropdown-toggle(data-toggle="dropdown", href="#") Settings 
+                                b.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href="/cms/settings/plugins") Plugins
+                        
                     ul.nav.pull-right
                         li.dropdown
                             a.dropdown-toggle(data-toggle="dropdown", href="#") Joe Bloggs 
