@@ -1,18 +1,22 @@
-Node CMS
-========
+edamame
+=======
 
-An attempt to (sort of) remake a PHP CMS I made about 7 years ago.
+v0.0.4
+
+A CMS written in Node.
 
 
 ---------------------------------------
 
 
-### Installing
+#### Installing
 
-npm install fakedarren-nodecms
+`npm install fakedarren-nodecms`
 
-node app.js
+#### Prerequisites
 
-Create the database by visiting [http://localhost:3000/cms/install](http://localhost:3000/cms/install)
+Requires a MongoDB database.
 
-[http://localhost:3000/cms](http://localhost:3000/cms)
+#### Configuration and Installation
+
+Update `backend/config/configuration.js` with your DB / host details. Then navigate to `/cms/install` to create the database.
