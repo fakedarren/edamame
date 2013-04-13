@@ -1,10 +1,10 @@
 define([
     'Backbone',
-    'Mustache',
+    'Handlebars',
     'models/PageList'
 ], function(
     Backbone,
-    Mustache,
+    Handlebars,
     PageList
 ){
 
@@ -23,11 +23,12 @@ define([
         },
 
         render: function(){
-            var html = '',
-                template = $('#template-page-list-item').html();
-
+            var source = $('#template-page-list-item').html(),
+                template = Handlebars.compile(source),
+                html = '';
+            
             this.collection.forEach(function(page){
-                html += Mustache.render(template, page.toJSON());
+                html += template(page.toJSON());
             });
 
             this.$el.html(html);

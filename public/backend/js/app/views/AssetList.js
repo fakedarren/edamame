@@ -1,10 +1,10 @@
 define([
     'Backbone',
-    'Mustache',
+    'Handlebars',
     'models/AssetList'
 ], function(
     Backbone,
-    Mustache,
+    Handlebars,
     AssetList
 ){
 
@@ -21,13 +21,14 @@ define([
         },
 
         render: function(){
-            var html = '',
-                template = $('#template-images-list-item').html();
+            var source = $('#template-images-list-item').html(),
+                template = Handlebars.compile(source),
+                html = '';
 
             this.collection.forEach(function(page){
                 var record = page.toJSON();
                 record.extension = record.src.slice(record.src.lastIndexOf('.') + 1);
-                html += Mustache.render(template, record);
+                html += template(record);
             });
 
             this.$el.html(html);

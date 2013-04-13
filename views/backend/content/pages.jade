@@ -6,17 +6,10 @@ block content
         div.row
 
             div.span9#pages
-                h1 Pages
+                div.page-header
+                    h1 Pages
 
-                ul.nav.nav-tabs
-                    li.active
-                        a(href="#tab-main-navigation", data-toggle="tab") Main Navigation
-                    li
-                        a(href="#tab-footer-navigation", data-toggle="tab") Footer Navigation
-
-                div.tab-content
-                    div.tab-pane.active#tab-main-navigation
-                    div.tab-pane#tab-footer-navigation
+                div#pages-content
  
             div.span3
                 div.well
@@ -34,6 +27,18 @@ block scripts
 
 block templates
 
-    script#template-page-list-item(type="text/template")
-        li {{title}}
-            a.remove.pull-right(href="#", data-id="{{_id}}") Delete
+    script#template-pages(type="text/template")
+        ul.nav.nav-tabs
+            {{#each this}}
+            li
+                a(href="#section-{{this._id}}", data-toggle="tab") {{this.title}} 
+            {{/each}}
+
+        div.tab-content
+            {{#each this}}
+            div.tab-pane.active(id="section-\{{this._id}}")
+                ul
+                {{#each pages}}
+                li {{this.title}}
+                {{/each}}
+            {{/each}}

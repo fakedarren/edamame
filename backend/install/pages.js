@@ -22,6 +22,14 @@ module.exports = {
                     title: 'My Third Page'
                 }
             ]
+        },
+        {
+            title: 'My Other Navigation',
+            pages: [
+                {
+                    title: 'Another page'
+                }
+            ]
         }
     ],
     installer: function(){

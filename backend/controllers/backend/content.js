@@ -1,25 +1,32 @@
 var mongoose = require("mongoose"),
+    sectionSchema = require('../../models/section').schema,
     pageSchema = require('../../models/page').schema,
+    async = require('async'),
     _ = require("lodash"),
     api;
 
 
+mongoose.model('sections', sectionSchema);
 mongoose.model('pages', pageSchema);
 
 
 api = {
 
-    routes: {    
+    routes: {
+        readAllSections: {
+            url: '/cms/sections',
+            method: 'get'
+        },
+        readSection: {
+            url: '/cms/sections/:id',
+            method: 'get'
+        },
         createPage: {
             url: '/cms/pages',
             method: 'post'
         },
         readPage: {
             url: '/cms/pages/:id',
-            method: 'get'
-        },
-        readAllPages: {
-            url: '/cms/pages',
             method: 'get'
         },
         updatePage: {
@@ -30,6 +37,50 @@ api = {
             url: '/cms/pages/:id',
             method: 'delete'
         }
+    },
+
+    readAllSections: function(req, res){
+        var sections = mongoose.model('sections'),
+            pages = mongoose.model('pages'),
+            content = [];
+
+        async.series({
+            sections: function(callback){
+                sections.find({}, function (err, docs) {
+                    callback(null, docs);
+                });
+            },
+            pages: function(callback){
+                pages.find({}, function (err, docs) {
+                    callback(null, docs);
+                });
+            },                    
+        }, function(err, docs){
+            docs.sections.forEach(function(section, i){
+                var sectionPages = docs.pages.filter(function(page){
+                    return page.sectionID == section._id;
+                });
+                content.push({
+                    _id: section._id,
+                    title: section.title,
+                    pages: sectionPages
+                });
+            });
+            res.json(content);
+        });
+    },
+
+    readSection: function(req, res){
+        var pages = mongoose.model('pages'),
+            query;
+
+        query = {
+            sectionID: req.params.id
+        };
+
+        pages.find(query, function(err, docs){
+            res.json(docs);
+        });
     },
 
     createPage: function(req, res){
@@ -44,13 +95,6 @@ api = {
         });
     },
     
-    readAllPages: function(req, res){
-        var pages = mongoose.model('pages');
-        pages.find({}, function(err, docs){
-            res.json(docs);
-        });
-    },
-
     updatePage: function(req, res){
         res.statusCode = 200;
         res.send("OK\n");

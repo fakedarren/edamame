@@ -1,13 +1,15 @@
 require([
     'Bootstrap',
+    'views/SectionList',
     'views/PageList'
 ], function(
     Bootstrap,
+    SectionListView,
     PageListView
 ){
 
-    window.foo = new PageListView({
-        el: '#tab-main-navigation'
-    });
+    new SectionListView({
+        el: '#pages-content'
+    })
 
 });
