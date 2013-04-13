@@ -5,7 +5,7 @@ require.config({
         'Bootstrap': '../libs/bootstrap.min',
         'Underscore': '../libs/lodash-underscore',
         'Backbone': '../libs/backbone',
-        'Mustache': '../libs/mustache'
+        'Handlebars': '../libs/handlebars'
     },
     shim: {
         'jQuery': {
@@ -21,8 +21,8 @@ require.config({
             deps: ['jQuery', 'Underscore'],
             exports: 'Backbone'
         },
-        'Mustache': {
-            exports: 'Mustache'
+        'Handlebars': {
+            exports: 'Handlebars'
         }
     }
 });
