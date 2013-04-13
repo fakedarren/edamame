@@ -5,6 +5,7 @@
         "node": "*"
     },
     "dependencies": {
+        "async": "*",
         "ejs": "*",
         "express": "*",
         "jade": "*",
