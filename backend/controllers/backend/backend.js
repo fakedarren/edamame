@@ -1,7 +1,5 @@
-var config = require('../../config/configuration'),
-    mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    db = mongoose.connect(config.database),
     _ = require('lodash');
 
 
@@ -43,25 +41,35 @@ module.exports = {
         
         install.forEach(function(module){
             var item = require(path + module),
-                name = item.model.name,
-                schema = item.model.schema;
+                models = item.models;
 
-            mongoose.model(name, schema);
-            
-            var ModelObject = db.model(name),
-                m = new ModelObject();
-            
-            m.collection.drop();
+            models.forEach(function(model){
+                mongoose.model(model.name, model.schema);
 
-            _(item.records).each(function(record){
-                var m = new ModelObject();
-                for (var i in record){
-                    m[i] = record[i];
+                var ModelObject = db.model(model.name),
+                    m = new ModelObject();
+                
+                m.collection.drop();
+
+                state.push('Added ' + model.name + ' collection');
+                
+                if (item[model.name + 'Records']){
+                    _(item[model.name + 'Records']).each(function(record){
+                        var m = new ModelObject();
+                        for (var i in record){
+                            m[i] = record[i];
+                        }
+                        m.save();
+                    });
+                    state.push('Added ' + item[model.name + 'Records'].length + ' records to ' + model.name + ' collection');
                 }
-                m.save();
             });
 
-            state.push('Added ' + name + ' collection and ' + item.records.length + ' records');
+            if (item.installer){
+                item.installer.call(item);
+                state.push('Ran the installer method');
+            }
+
         });
 
         state.push('Install script complete!');

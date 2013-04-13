@@ -1,12 +1,12 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId,
-    model = require('../models/asset');
+    asset = require('../models/asset');
 
 
 module.exports = {
-    model: model,
-    records: [
+    models: [asset],
+    assetsRecords: [
         {
             name: 'Pic 1',
             src: 'http://placekitten.com/200/300',

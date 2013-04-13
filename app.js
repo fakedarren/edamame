@@ -1,8 +1,11 @@
 var express = require('express'),
     app = express(),
     controller = require('./backend/classes/controller.class'),
-    plugins = require('./backend/classes/plugins.class.js');
-
+    plugins = require('./backend/classes/plugins.class.js'),
+    config = require('./backend/config/configuration'),
+    mongoose = require('mongoose'),
+    db = mongoose.connect(config.database);
+    
 
 app.set('view engine', 'jade');
 
@@ -16,6 +19,7 @@ app.use(express.session({
 
 
 global.plugins = plugins.initialize(app);
+global.db = db;
 
 controller.initialize(app);
 
