@@ -1,0 +1,31 @@
+extends ../backend-layout
+
+block content
+
+    div.container
+        div.row
+
+            div.span9#pages
+                div.page-header
+                    h1 Grids
+
+                div#grids-content
+ 
+            div.span3
+                div.well
+                    ul
+                        li
+                            a(href="/cms/content/new-grid") Create a new Grid
+
+    div#modal.modal.hide
+        div.modal-body
+
+block scripts
+    script(src="/backend/js/app/grids.js")
+
+block templates
+    
+    script#template-grid-list-item(type="text/template")
+        li
+            h3 {{name}}
+            p {{description}}

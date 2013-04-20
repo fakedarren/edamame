@@ -1,6 +1,7 @@
 var mongoose = require("mongoose"),
     sectionSchema = require('../../models/section').schema,
     pageSchema = require('../../models/page').schema,
+    gridSchema = require('../../models/grid').schema,
     async = require('async'),
     _ = require("lodash"),
     api;
@@ -8,6 +9,7 @@ var mongoose = require("mongoose"),
 
 mongoose.model('sections', sectionSchema);
 mongoose.model('pages', pageSchema);
+mongoose.model('grids', gridSchema);
 
 
 api = {
@@ -36,6 +38,14 @@ api = {
         deletePage: {
             url: '/cms/pages/:id',
             method: 'delete'
+        },
+        readAllGrids: {
+            url: '/cms/grids',
+            method: 'get'
+        },
+        readGrid: {
+            url: '/cms/grids/:id',
+            method: 'get'
         }
     },
 
@@ -103,6 +113,27 @@ api = {
     deletePage: function(req, res){
         res.statusCode = 200;
         res.send("OK\n");
+    },
+
+    readAllGrids: function(req, res){
+        var grids = mongoose.model('grids');
+
+        grids.find({}, function(err, docs){
+            res.json(docs);
+        });
+    },
+
+    readGrid: function(req, res){
+        var grids = mongoose.model('grids'),
+            query;
+
+        query = {
+            sectionID: req.params.id
+        };
+
+        grids.find(query, function(err, docs){
+            res.json(docs);
+        });
     }
 
 };
@@ -119,6 +150,14 @@ module.exports = _.merge(api, {
             url: '/cms/content/new-page',
             method: 'get'   
         },
+        grids: {
+            url: '/cms/content/grids',
+            method: 'get'
+        },
+        newGrid: {
+            url: '/cms/content/new-grid',
+            method: 'get'
+        },
         modules: {
             url: '/cms/content/modules',
             method: 'get'
@@ -131,6 +170,14 @@ module.exports = _.merge(api, {
 
     newPage: function(req, res){
         res.render('backend/content/new-page');
+    },
+
+    grids: function(req, res){
+        res.render('backend/content/grids');
+    },
+
+    newGrid: function(req, res){
+        res.render('backend/content/new-grid');
     },
     
     modules: function(req, res){
