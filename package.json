@@ -1,6 +1,7 @@
 {
     "name": "edamame",
-    "version": "0.0.4",
+    "description": "A CMS written in JavaScript",
+    "version": "0.0.5",
     "engines": {
         "node": "*"
     },

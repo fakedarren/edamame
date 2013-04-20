@@ -1,7 +1,7 @@
 edamame
 =======
 
-v0.0.4
+v0.0.5
 
 A CMS written in Node.
 
@@ -11,7 +11,7 @@ A CMS written in Node.
 
 #### Installing
 
-`npm install fakedarren-nodecms`
+`npm install edamame`
 
 #### Prerequisites
 
