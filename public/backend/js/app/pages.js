@@ -9,7 +9,8 @@ require([
 ){
 
     new SectionListView({
-        el: '#pages-content'
+        el: 'body',
+        content: '#pages-content'
     })
 
 });

@@ -13,7 +13,7 @@ define([
         events: {
             'click #create-page button': 'create',
             'click .edit': 'edit',
-            'click .remove': 'remove',
+            'click .remove': 'remove'
         },
 
         initialize: function(){

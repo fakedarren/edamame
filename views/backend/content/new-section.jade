@@ -1,0 +1,13 @@
+div.modal-header
+    button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+    h3 Create a new Section
+div.modal-body
+    form.form-horizontal#create-section(action="#")
+        fieldset
+            div.control-group
+                label.control-label Section Name 
+                div.controls
+                    input(type="text")
+            div.control-group
+                div.controls
+                    button.btn.btn-primary(type="submit") Create Section

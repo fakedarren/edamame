@@ -5,6 +5,7 @@ define([
 ){
 
     return Backbone.Model.extend({
+        url: '/cms/sections',
         defaults: {
             id: null,
             title: '',

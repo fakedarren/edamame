@@ -7,14 +7,18 @@ var mongoose = require("mongoose"),
     api;
 
 
-mongoose.model('sections', sectionSchema);
-mongoose.model('pages', pageSchema);
-mongoose.model('grids', gridSchema);
+var Section = mongoose.model('sections', sectionSchema);
+var Page = mongoose.model('pages', pageSchema);
+var Grid = mongoose.model('grids', gridSchema);
 
 
 api = {
 
     routes: {
+        createSection: {
+            url: '/cms/sections',
+            method: 'post'
+        },
         readAllSections: {
             url: '/cms/sections',
             method: 'get'
@@ -47,6 +51,15 @@ api = {
             url: '/cms/grids/:id',
             method: 'get'
         }
+    },
+
+    createSection: function(req, res){
+        Section.create({
+            title: req.body.title
+        }, function(err){
+            res.statusCode = 200;
+            res.send("OK\n");
+        });
     },
 
     readAllSections: function(req, res){
@@ -94,8 +107,13 @@ api = {
     },
 
     createPage: function(req, res){
-        res.statusCode = 200;
-        res.send("OK\n");
+        Page.create({
+            sectionID: req.body.sectionID,
+            title: req.body.title
+        }, function(err){
+            res.statusCode = 200;
+            res.send("OK\n");
+        });
     },
     
     readPage: function(req, res){
@@ -150,6 +168,10 @@ module.exports = _.merge(api, {
             url: '/cms/content/new-page',
             method: 'get'   
         },
+        newSection: {
+            url: '/cms/content/new-section',
+            method: 'get'   
+        },
         grids: {
             url: '/cms/content/grids',
             method: 'get'
@@ -170,6 +192,10 @@ module.exports = _.merge(api, {
 
     newPage: function(req, res){
         res.render('backend/content/new-page');
+    },
+
+    newSection: function(req, res){
+        res.render('backend/content/new-section');
     },
 
     grids: function(req, res){

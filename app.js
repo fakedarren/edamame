@@ -13,6 +13,7 @@ app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 app.use(express.errorHandler());
 app.use(express.cookieParser());
+app.use(express.bodyParser());
 app.use(express.session({
     secret: "My simple node.js CMS" 
 }));
