@@ -5,11 +5,14 @@ define([
 ){
 
     return Backbone.Model.extend({
-        url: '/cms/pages',
+        url: function(){
+            return this.isNew() ? '/cms/pages' : '/cms/pages/' + this.id;
+        },
+
+        idAttribute: '_id',
+
         defaults: {
-            id: null,
-            sectionID: '',
-            title: ''
+            _id: null
         }
     });
     

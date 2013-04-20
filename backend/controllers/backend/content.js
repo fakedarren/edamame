@@ -36,7 +36,7 @@ api = {
             method: 'get'
         },
         updatePage: {
-            url: '/cms/pages',
+            url: '/cms/pages/:id',
             method: 'put'
         },
         deletePage: {
@@ -117,15 +117,29 @@ api = {
     },
     
     readPage: function(req, res){
-        res.json({
-            id: req.params.id,
-            title: 'My Page'
+        var pages = mongoose.model('pages'),
+            query;
+
+        query = {
+            _id: req.params.id
+        };
+
+        pages.findOne(query, function(err, docs){
+            res.json(docs);
         });
     },
     
     updatePage: function(req, res){
-        res.statusCode = 200;
-        res.send("OK\n");
+        var query = {
+            _id: req.params._id
+        };
+
+        Page.findOneAndUpdate(query, {
+            title: req.params.title
+        }, function(err){
+            res.statusCode = 200;
+            res.send("OK\n");
+        });
     },
     
     deletePage: function(req, res){
@@ -136,7 +150,7 @@ api = {
     readAllGrids: function(req, res){
         var grids = mongoose.model('grids');
 
-        grids.find({}, function(err, docs){
+        grids.findOne({}, function(err, docs){
             res.json(docs);
         });
     },
@@ -168,6 +182,10 @@ module.exports = _.merge(api, {
             url: '/cms/content/new-page',
             method: 'get'   
         },
+        editPage: {
+            url: '/cms/content/pages/:id',
+            method: 'get'   
+        },
         newSection: {
             url: '/cms/content/new-section',
             method: 'get'   
@@ -192,6 +210,10 @@ module.exports = _.merge(api, {
 
     newPage: function(req, res){
         res.render('backend/content/new-page');
+    },
+
+    editPage: function(req, res){
+        res.render('backend/content/edit-page');
     },
 
     newSection: function(req, res){

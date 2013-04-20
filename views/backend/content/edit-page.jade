@@ -1,0 +1,31 @@
+extends ../backend-layout
+
+block content
+
+    div.container
+        div.row
+
+            div.span12#pages-edit-content
+
+block scripts
+    script(src="/backend/js/app/pages-edit.js")
+
+block templates
+
+    script#template-page-edit-form(type="text/template")
+        div.page-header
+            h1 Edit page '{{this.title}}'
+
+        form.form-horizontal#edit-page(action="#")
+            fieldset
+                div.control-group
+                    label.control-label Section
+                    div.controls
+                        select
+                div.control-group
+                    label.control-label Page Name 
+                    div.controls
+                        input(type="text", value="{{this.title}}")
+                div.control-group
+                    div.controls
+                        button.btn.btn-primary(type="submit") Edit Page
